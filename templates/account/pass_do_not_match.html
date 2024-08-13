@@ -1,0 +1,17 @@
+{% extends 'account/auth.html' %}
+
+{% block validpass %}
+<style>
+.passvalid {
+  color: #ff7f7f;
+  font-size: 12px;
+  display: inline;
+}
+
+</style>
+
+<div class="passvalid">
+                        Passwords do not match.
+                      </div>
+
+                      {% endblock %}

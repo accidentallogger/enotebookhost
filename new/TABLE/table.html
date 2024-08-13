@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Invite Status</title>
+    <link rel="stylesheet" href="table.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Invite Status</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bxxxxx</td>
+            <td>cxxx@gmail.com</td>
+            <td>
+              <button class="status-btn" onclick="resendInvite(this)">
+                Resend
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Bxxxxx</td>
+            <td>cxxx@gmail.com</td>
+            <td><span class="status-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>Bxxxxx</td>
+            <td>cxxx@gmail.com</td>
+            <td>
+              <button class="status-btn" onclick="resendInvite(this)">
+                Resend
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="table.js"></script>
+  </body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reaction Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"  rel="stylesheet"/>
+      
+    <link rel="stylesheet" href="main_new1.css" />
+    <link rel="stylesheet" href="main_new2.css">
+    <!-- <link rel="stylesheet" href="/public/CSS/mainfileextended.css"/> -->
+     <script src="main_new.js"></script>
+
+  </head>
+
+  <body>
+
+      <!-- molview editor -->
+  <!-- <div style="text-align: center;" id="framediv" >
+    <div style="background-color: #a52a2a; color: #f5f5dc; font-size: 18px;">
+      <div id ="compoudchangebarid" >Compound 
+      
+    </div>
+    <button onclick="hideFrameDiv()" >Cancel </button>
+
+  </div>
+      <div style="border: 1px solid black;" > 
+      <iframe id="molFrame" 
+        style="width: 100%; height: 500px;resize: both;" frameborder="0" src="molview/index.html"></iframe>
+    </div>
+  </div>
+
+  <style type="text/css">
+    #framediv {
+      opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+      box-shadow: 1px 1px 5px 5px #888888;
+      width:60%;
+      position:fixed;
+      top: 50px; 
+      right: 50px;
+      z-index: 100;
+    }
+    #framediv.visible {
+    opacity: 1;
+    visibility: visible;
+}
+  </style> -->
+   <!-- molview editor end-->
+
+    <nav>
+      <div class="sidebar-top">
+        <span class="shrink-btn">
+          <i class="bx bx-chevron-left"></i>
+        </span>
+        <img src="assets/images/logo.png" class="logo" alt="" />
+        <h3 class="hide">E-notebook</h3>
+      </div>
+      <br />
+
+      <div class="sidebar-links">
+        <ul>
+          <div class="active-tab"></div>
+
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" class="active" data-active="0">
+              <div class="icon">
+                <i class="bx bx-message-edit"></i>
+                <i class="bx bxs-message-edit"></i>
+              </div>
+              <span class="link hide">Getting started</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" class="create-btn" data-active="1">
+              <div class="icon">
+                <i class="bx bx-message-square-add"></i>
+                <i class="bx bxs-message-square-add"></i>
+              </div>
+              <span class="link hide">Create</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="2">
+            <a href="#" class="active" data-active="2">
+              <div class="icon">
+                <i class="bx bx-tachometer"></i>
+                <i class="bx bxs-tachometer"></i>
+              </div>
+              <span class="link hide">Dashboard</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="3">
+            <a href="#" data-active="1">
+              <div class="icon">
+                <i class="bx bx-message-dots"></i>
+                <i class="bx bxs-message-dots"></i>
+              </div>
+              <span class="link hide">Feedback</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="4">
+            <a href="#" data-active="2">
+              <div class="icon">
+                <i class="bx bx-comment-detail"></i>
+                <i class="bx bxs-comment-detail"></i>
+              </div>
+              <span class="link hide">Issues</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="5">
+            <a href="#" data-active="3">
+              <div class="icon">
+                <i class="bx bx-message-alt-dots"></i>
+                <i class="bx bxs-message-alt-dots"></i>
+              </div>
+              <span class="link hide">Changelog</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="6">
+            <a href="#" data-active="3">
+              <div class="icon">
+                <i class="bx bxs-user-account"></i>
+                <i class="bx bxs-user-account"></i>
+              </div>
+              <span class="link hide">Users</span>
+            </a>
+          </li>
+          <br />
+
+          
+        </ul>
+
+        <h4 class="hide">WIDGETS</h4>
+
+        <ul>
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" data-active="4">
+              <div class="icon">
+                <i class="bx bxs-comment-detail"></i>
+                <i class="bx bxs-comment-detail"></i>
+              </div>
+              <span class="link hide">Annoucement</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" data-active="5">
+              <div class="icon">
+                <i class="bx bx-help-circle"></i>
+                <i class="bx bxs-help-circle"></i>
+              </div>
+              <span class="link hide">Feedback</span>
+            </a>
+          </li>
+
+          <br /><br /><br /><br /><br />
+
+          
+        </ul>
+
+        <ul>
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" data-active="4">
+              <div class="icon">
+                <i class="bx bx-message-alt-dots"></i>
+                <i class="bx bxs-message-alt-dots"></i>
+              </div>
+              <span class="link hide">Changelog </span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" data-active="5">
+              <div class="icon">
+                <i class="bx bx-calendar-alt"></i>
+                <i class="bx bxs-calendar-alt"></i>
+              </div>
+              <span class="link hide">What's new </span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="2">
+            <a href="#" data-active="6">
+              <div class="icon">
+                <i class="bx bx-help-circle"></i>
+                <i class="bx bxs-help-circle"></i>
+              </div>
+              <span class="link hide">Help & Support</span>
+            </a>
+          </li>
+
+          
+        </ul>
+      </div>
+
+     
+
+         <div class="sidebar-footer">
+            <a href="#" class="account tooltip-element" data-tooltip="0">
+              <i class="bx bx-user"></i>
+            </a>
+            <div class="admin-user tooltip-element" data-tooltip="1">
+              <div class="admin-profile hide">
+                <img src="assets/images/face.png" alt="Profile Picture" />
+                <div class="admin-info">
+                  <h3>User Name</h3>
+                  <h5>user</h5>
+                </div>
+              </div>
+              <a href="#" class="edit-profile">
+                <i class="bx bx-edit"></i>
+                
+                <span>Edit Profile</span>
+              </a>
+             
+            </div>
+          </div>
+          
+
+      </div>
+    </nav>
+
+      <!-- main-content -->
+    <div class="main-content"  >
+    <header>
+      <h3 style="padding: 0.5rem;" >My Dashboard</h3>
+    </header>
+   
+      <div style="text-align: center; margin-top: 4rem; padding: 0 1rem;">
+      <h3>Reaction Report</h3>
+
+     
+
+      <div style="margin-top: 2.5rem; margin-bottom: 4rem; " class="parent-div">
+        <h4 style="color: #828282;" >Experiment Name</h4>
+
+        <!-- Reaction Table start -->
+      <div class="card">
+        <div class="card-header" style="background-color:#008080; color: black;">
+          <h3> Reaction Table </h3>
+        </div>
+
+        <div class="card-body">
+      <table class="table table-bordered">
+        <tr>
+          <th>Compound</th>
+          <th>Molecular-Formula</th>
+          <th>Molecular Weight (g/moles)</th>
+          <th>Weight of Chemical (g)</th>
+          <th>Moles</th>
+          <th>Ratio</th>
+          <th>Density</th>
+        </tr>
+
+      </table>
+      </div>
+      
+      </div>
+        <!-- Reaction Table end -->
+      
+
+      <!-- reation scheme -->
+				<div class="card card-outline-secondary ">
+					<div  style="background-color:#008080; color: black; padding: 0.5rem;" class="card-header">
+						<h3 > Reaction Scheme </h3>
+					</div>
+           
+          <div class="Scheme-header" >
+            <div class="catalyst-solvent" style="display: flex; flex-direction: column; padding: 1rem;" >
+                <div>Catayst Used : </div>
+                <div>Solvent Used : </div>
+            </div>
+
+            <div class="file-input-container" >
+           <input type="file" class="customfile" /> 
+          </div>
+            </div>
+        
+					<div class="card-body" style="background-color: #f5f5f5;"  >
+
+						<div style="text-align: center;padding: 15px;">
+							<input type="text" id="Eqtn" placeholder="A+B=C+D" style="outline: none; border: none; text-align: center; border-radius: 2rem;font-size: 1.3rem;" >
+              
+						</div>
+            <div id="compoundImages" style="display: flex; justify-content: center; flex-wrap: wrap;"></div>
+					</div>
+				</div>
+				<!-- reationscheme close -->
+
+        <div class="card card-outline-secondary ">
+					<div class="card-header" style="background-color:#008080; color: black;">
+						<h3> Procedure </h3>
+					</div>
+
+
+					<div id="procedureCover" class="card-body">
+						<p contenteditable="false">Note: For Bold, Italic and Underline, Select Text and Press (Ctrl+B),
+							(Ctrl+I) and (Ctrl+U) respectively.</p>
+						<p style="padding: 20px;border: 1px solid blue;" id="crtTpcPrd" contentEditable="true" ondrop="huhh(event)"  ondragover="allowDrop(event)">To a
+							stirred solution of <b>A (<span id="val1A">0.0</span>g,<span id="val2A">0.00</span>mmol)</b>
+							was added <b>B(<span id="val1B">0.00</span>g,<span id="val2B">0.00</span>mmol)</b> at 0
+							degree Celsius and allowed to stir for 30 min.A solution of <b>C(<span
+									id="val1C">0.0</span>g,<span id="val2C">0.00</span>mmol)</b>in THF(10 ml)
+							was added slowly over 30 min .The reaction mixture was then allowed to stir at room
+							temperature for 5 hour.The progress of reaction was monitored on TLC(product Rf:
+							0.0,SM,Rf:0.00 in 50% EtOAc in hexane).
+							After completion of reaction the reaction mixture was quenched with water(20ml) and product
+							was extracted with ethyle acetate (30 ml x 3).
+							The combined organic layers were dried over Na<sub>2</sub>SO<sub>4</sub> and distilled to
+							get crude. The crude was purified by column chromatography(silica 60-120 mesh) and desired
+							product was eluted in 2% MeOH in DCM.
+							Distillation of desired fraction gave pure compond <b>D(<span id="val1D">0.0</span>g,<span
+									id="val2D">0.00</span>mmol)</b> as white solid.</p>
+					</div>
+
+
+        </div>
+        <!-- /.card -->
+        <div class="card mt-4">
+          <div class="card-header" style="background-color:#008080; color: black;">
+                  <h3 class="card-title" style="display: inline-block;">Result Table </h3>
+           
+          </div>
+                <div id="resultTableCover" class="card-body">
+                  <table id="restble" cellpadding="10">
+            <tr>
+            <th>Compound ID</th>
+            <th>Compound</th>
+            <th>Amount of Product(grams)</th>
+            <th>Yield</th>
+            <th>mmol</th>
+            <th>Purity</th>
+            <th>Remarks</th>
+            </tr>
+      
+            <tr>
+            <td contenteditable="true" >Book-1-T-105-A-45</td>
+              <td ><input  onchange="zen(this)"><div ondrop="drop(event)"  ondragover="allowDrop(event)" ></div></td>
+              <td ><input value="0.00" onchange="rescalcfun(this)"></td>
+              <td>60%</td>
+              <td>0.00</td>
+              <td contenteditable="true">95%</td>
+              <td contenteditable="true">Desired Product</td>
+              <td><button onclick="addRTRow(this)" class="cssCircle plusSign">&#43;</button></td>
+              <td><button onclick="removeRTRow(this)" class="cssCircle minusSign">&#8211;</button></td>
+            </tr>
+            </table>
+                </div>
+           </div>
+           <!-- next -->
+
+           <div class="card ">
+            <div class="card-header" style="background-color:#008080; color: black;">
+              <h3 class="card-title" style="display: inline-block;">TLC</h3>
+         
+            </div>
+          <div>
+          <div class="tlccover" id="tlccover">
+          <div class="block" id="block">
+          </div>
+          <div class="context-menu hide" id="context-menu">
+                      <ul class="menu" id="menu">
+                        <li>rf = 1</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div style="height:50px;display:flex;align-items:center; background-color: #ffffcc;justify-content:center"><b
+                      id="tlcheading" class="tlcheading" contenteditable="true">TLC_TITLE</b></div>
+                </div>
+              </div>
+
+              <!-- next -->
+
+              <div class="card ">
+                <div class="card-header" style="background-color:#008080; color: black;">
+                  <h3 style="display: inline-block;"> Analytical Data </h3>
+                  <button class="cutAllbtn" onclick="dropallfiles()"></button>
+                </div>
+                <div class="card-body">
+                  <table id="anatble" cellpadding="10">
+                    <tr>
+                      <th>Type</th>
+                      <th>File</th>
+                      <th>Upload</th>
+                      <th>Remark</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select id="ANAtype">
+                          <option value="LCMS">LCMS</option>
+                          <option value="NMR">NMR</option>
+                          <option value="HPLC">HPLC</option>
+                          <option value="IR">IR</option>
+                                  <option value="OTHER" >Other</option>
+                        </select>
+                      </td>
+                      <td><input id="file"type="file" class="ANAfiles"></td>
+                      <td><button type="button" id="upload_btn"class="btn btn-primary" onclick="upload(this)">Upload</button></td>
+                      <td contentEditable="true">MainProduct</td>
+                      <td><button onclick="addADRow(this)" class="cssCircle plusSign">&#43;</button></td>
+                      <td><button onclick="deleteADRow(this)" class="cssCircle minusSign">&#8211;</button></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <!-- next -->
+              <div class="card ">
+                <div class="card-header" style="background-color:#008080; color: black;">
+                  <h3 class="card-title">Result </h3>
+                </div>
+                <div id="result" class="card-body">
+                  <p contentEditable="true" id="conclusion"> The reaction was successful. </p>
+                </div>
+              </div><br>
+              <br>
+              <br><br><br>
+
+    </div>
+    
+    </div>
+    </div>
+    
+    <!-- adarsh masterpiece-->
+     <div class="rightSideBar">
+
+      <div class="top-analysis">
+        <h4><i class="fa-solid fa-pen-to-square"></i> Edit Reaction Report</h4>
+        <hr>
+        <div  class="reactant-product-catalyst" >
+          <div>
+        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+        <label class="btn btn-outline-success" for="option1" style="font-size: 0.9rem; " ><i class="fa-solid fa-circle-plus"></i> Reactant</label>
+      </div>
+      <div>
+        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+        <label class="btn btn-outline-success" for="option2" style="font-size: 0.9rem; "><i class="fa-solid fa-circle-plus"></i>Product</label>
+      </div>
+      <div>
+        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+        <label class="btn btn-outline-success" for="option3" style="font-size: 0.9rem; "><i class="fa-solid fa-circle-plus"></i>Solvent</label>
+      </div>
+      <div>
+        <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+        <label class="btn btn-outline-success" for="option4" style="font-size: 0.9rem; "><i class="fa-solid fa-circle-plus"></i>Catalyst</label>
+      </div>
+      <!-- <div>
+        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+        <label class="btn btn-outline-success"  for="option3">Catalyst</label>   
+      </div> -->
+      </div>
+
+
+      
+
+        <div style="display: flex;margin-bottom: 1rem;" >
+       
+        <input type="number" class="form-control" id="actualWgt"  placeholder="Weight in gm">
+      </div>
+
+      <div>
+        <div class="input-group mb-3" >
+          <input type="text" class="form-control" id="search-input" placeholder="Search compounds" aria-label="Search compounds" >
+          <button class="btn btn-outline-secondary" type="button" id="search-button">Get</button>
+        </div>
+        <div id="suggestions" class="list-group suggestions-dropdown"></div>
+      </div>
+
+       
+  
+
+        <button class="generate-summary" onclick="gotoeditorfun(this)" >Use MoleView</button>
+        <button class="generate-summary">Get Rf factor</button>
+
+        <!-- <div class="progress-section">
+          <h5>Progress of Current Notebook</h5>
+          <div class="progress-circle">
+            <span class="progress-percentage">100%</span>
+          </div>
+          <div class="progress-stats">
+            <div class="stat completed">Completed 0%</div>
+            <div class="stat in-progress">In progress 0%</div>
+            <div class="stat pending">Pending 100%</div>
+          </div>
+        </div> -->
+
+        <div class="keywords-section">
+          <h5>Used Compounds in Reaction</h5>
+          <div class="keyword-filters">
+          <!-- Sample -->
+            <!-- <span class="filter">Carbon 6 <i class="fa-solid fa-xmark"></i> </span>  -->
+          
+          </div>
+        </div>
+        
+        <div class="top-resources">
+          <h5 >Chemist has its job done</h5>
+          <span class="resource">Save locally</span>
+          <span class="resource">Submit to faculty</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <script src="sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

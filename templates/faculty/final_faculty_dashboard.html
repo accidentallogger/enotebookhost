@@ -1,0 +1,626 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Dashboard</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/faculty_sidebar.css' %}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      /* Additional CSS for responsiveness */
+      @media (max-width: 768px) {
+        .sidebar-links ul {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .container {
+          width: 100%;
+          max-width: none;
+        }
+      }
+    </style>
+    <style>
+      /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+          } */
+      .faculty-card {
+        background-color: white;
+        border: 2px solid #ffcccb;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        max-width: 1000px;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        margin-bottom: 400px;
+      }
+      .faculty-card img {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+      }
+      .faculty-card .info {
+        margin-left: 20px;
+        flex-grow: 1;
+      }
+      .faculty-card .info h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .faculty-card .info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: gray;
+      }
+      .faculty-card .stats {
+        display: flex;
+        gap: 10px;
+      }
+      .faculty-card .stats .stat {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        padding: 5px 10px;
+        font-size: 14px;
+        text-decoration: none;
+        color: black;
+        transition: background-color 0.3s, transform 0.3s;
+        cursor: pointer;
+      }
+
+      .faculty-card .stats .stat:hover {
+        background-color: #e0e0e0;
+        transform: scale(1.05);
+      }
+
+      .faculty-card .alert-icon {
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      /*popup*/
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #in,
+      #batch-input {
+        border: 2px solid rgb(161 161 161);
+        height: 40px;
+        border-radius: 3px;
+        padding-left: 10px;
+        box-sizing: border-box;
+        margin: 15px 0px;
+        background-color: white;
+        font-size: 16px;
+      }
+
+      .line {
+        width: calc(100% + 40px);
+        margin: 10px -20px;
+      }
+
+      /* Popup container styles */
+      .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Popup content styles */
+      .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        width: 500px;
+        height: 300px;
+      }
+
+      /* Close button styles */
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 40px;
+        cursor: pointer;
+      }
+
+      /* Form styles */
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin: 10px;
+        font-size: 20px;
+        color: rgb(116 116 116);
+      }
+
+      input {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+      }
+      #put,
+      #batch-submit {
+        border-radius: 3px;
+        cursor: pointer;
+        width: 100%;
+        background-color: #647affc7;
+        color: white;
+        height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0px;
+        border: none;
+      }
+
+      #put:hover,
+      #batch-submit:hover {
+        background-color: #0e61ba;
+      }
+      @media (max-width: 768px) {
+        .faculty-card {
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 300px;
+        }
+        .faculty-card .info {
+          margin-left: 0;
+          margin-top: 10px;
+          text-align: center;
+        }
+        .faculty-card .stats {
+          flex-direction: column;
+          gap: 5px;
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 overflow-auto max-sm:shrink">
+    {% if messages %}
+    <div>
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <nav>
+      <div class="sidebar-top max-sm:mt-[1.9rem]">
+        <span class="shrink-btn">
+          <i class="bx bx-chevron-left"></i>
+        </span>
+        <img src="{% static 'img/logo.png' %}" class="logo" alt="" />
+        <h3 class="hide">E-notebook</h3>
+      </div>
+      <br />
+
+      <div class="sidebar-links">
+        <ul>
+          <div class="active-tab"></div>
+
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" class="active" data-active="0">
+              <div class="icon">
+                <i class="bx bx-message-edit"></i>
+                <i class="bx bxs-message-edit"></i>
+              </div>
+              <span class="link hide">Getting started</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" class="create-btn" data-active="1">
+              <div class="icon">
+                <i class="bx bx-message-square-add"></i>
+                <i class="bx bxs-message-square-add"></i>
+              </div>
+              <span class="link hide">Create Batch</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" class="create-btn" data-active="1" id="openPopupBtn">
+              <div class="icon">
+                <i class="bx bx-message-square-add"></i>
+                <i class="bx bxs-message-square-add"></i>
+              </div>
+              <span class="link hide">Invite Student</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="1">
+            <a
+              href="#"
+              class="create-btn"
+              data-active="1"
+              id="openBatchPopupBtn"
+            >
+              <div class="icon">
+                <i class="bx bx-message-square-add"></i>
+                <i class="bx bxs-message-square-add"></i>
+              </div>
+              <span class="link hide">Add Batch</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="2">
+            <a href="#" class="active" data-active="2">
+              <div class="icon">
+                <i class="bx bx-tachometer"></i>
+                <i class="bx bxs-tachometer"></i>
+              </div>
+              <span class="link hide">Dashboard</span>
+            </a>
+          </li>
+          <form method="POST">
+            {% csrf_token %} {% block batchcontent %} {% for b in batchlist %}
+            <li class="tooltip-element" data-tooltip="2">
+              <a class="active" data-active="2">
+                <div class="icon">
+                  <i class="bx bxs-checkbox"></i>
+                  <i class="bx bxs-checkbox"></i>
+                </div>
+                <button type="submit" name="batch-show-{{b}}">
+                  <span class="link hide">Batch {{b}}</span>
+                </button>
+              </a>
+            </li>
+            {% endfor %} {% endblock batchcontent %}
+          </form>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- column 2 start -->
+    <div class="flex flex-col overflow-x-hidden">
+      <div class="max-sm:ml-[3rem] max-sm:mb-5 max-sm:mt-[1.9rem] lg:ml-[2rem]">
+        <div class="dashboard-header max-sm:h-0 w-[60vw]">
+          <div class="search-bar">
+            <i class="bx bx-search"></i>
+            <input type="text" placeholder="Search..." />
+          </div>
+          <div class="profile-dropdown">
+            <img
+              src="{% static 'img/face.png' %}"
+              alt="Profile Picture"
+              class="profile-pic"
+            />
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">View Profile</a>
+              <a href="#" class="dropdown-item">Edit Profile</a>
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <main class="pt-0">
+        <h2 class="font-bold text-[1.5rem] max-sm:mt-5 mb-5">My Dashboard</h2>
+
+        <!-- Faculty Card -->
+        {% block studentcard %} {% for i in student_in_batch %}
+        <div class="faculty-card">
+          <div class="alert-icon"></div>
+          <img src="https://via.placeholder.com/60" alt="student" />
+          <div class="info">
+            <h2>{{i.studentname}}</h2>
+            <p>{{i.studentemail}}</p>
+          </div>
+          <div class="stats">
+            <div class="stat">0 Submissions</div>
+            <div class="stat">+91 {{i.studentphone}}</div>
+          </div>
+        </div>
+        {% endfor %} {% endblock studentcard %}
+        <!-- End Faculty Card -->
+      </main>
+    </div>
+
+    <!-- column 2 end  -->
+
+    <!-- column 3 start  -->
+    <!-- 3. Right Side Bar -->
+    <div class="container ml-auto px-4 py-8 w-[16rem] max-sm:hidden">
+      <!-- Main Heading -->
+      <div
+        class="bg-gradient-to-r from-green-200 to-blue-200 border border-gray-300 rounded-lg shadow-lg p-4 flex items-center justify-between"
+      >
+        <p class="text-gray-700 font-semibold">Here is top analysis</p>
+        <button
+          class="cross-button text-gray-600 hover:text-red-500 focus:outline-none"
+        >
+          ❌
+        </button>
+      </div>
+
+      <!-- Summary -->
+      <div
+        class="bg-gradient-to-r from-white to-blue-200 border border-gray-300 rounded-lg shadow-lg p-4 flex items-center justify-center"
+      >
+        <button
+          id="generate-summary-btn"
+          class="bg-blue-500 text-white hover:bg-blue-600 focus:outline-none rounded-lg px-6 py-2 font-medium"
+        >
+          📝 Generate Summary
+        </button>
+      </div>
+
+      <!-- Overall Sentiment -->
+      <div id="blocks-to-show" class="hidden">
+        <div
+          class="bg-gradient-to-r from-white to-green-200 border border-gray-300 rounded-lg shadow-lg p-4 flex items-center justify-center flex-col"
+        >
+          <p class="text-gray-700 font-semibold mb-2 mr-auto">
+            Overall sentiment
+          </p>
+          <div
+            class="bg-green-300 rounded-full h-32 w-32 flex items-center justify-center text-2xl font-bold text-green-800"
+          >
+            100%
+          </div>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-2 mt-4">
+            <div
+              class="badge-positive bg-green-200 text-green-700 border border-current rounded-lg px-4 py-1 flex items-center justify-between w-48 hover:bg-green-300 mx-auto"
+            >
+              <span>😃 Positive</span>
+              <span
+                class="bg-green-300 border border-current rounded-full px-2 text-xs"
+                >2</span
+              >
+            </div>
+
+            <div
+              class="badge-negative bg-red-200 text-red-700 border border-current rounded-lg px-4 py-1 flex items-center justify-between w-48 hover:bg-red-300 mx-auto"
+            >
+              <span>😔 Negative</span>
+              <span
+                class="bg-red-300 border border-current rounded-full px-2 text-xs"
+                >1</span
+              >
+            </div>
+
+            <div
+              class="badge-neutral bg-gray-200 text-gray-700 border border-current rounded-lg px-4 py-1 flex items-center justify-between w-48 hover:bg-gray-300 mx-auto"
+            >
+              <span>😐 Neutral</span>
+              <span
+                class="bg-gray-300 border border-current rounded-full px-2 text-xs"
+                >10</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Keywords -->
+        <div
+          class="bg-gradient-to-r from-white to-blue-200 border border-gray-300 rounded-lg shadow-lg p-4"
+        >
+          <div class="Keyword-Icon flex items-center">
+            <span class="material-icons text-gray-700 text-4xl">label</span>
+            <!-- Icon -->
+            <p class="text-gray-700 mb-2 font-semibold text-lg">Keywords</p>
+          </div>
+
+          <!-- CSV Badge -->
+          <div
+            class="badge-keywords bg-blue-200 text-blue-700 border border-current rounded-md px-4 py-2 mb-2 flex items-center justify-between w-48 hover:bg-blue-300"
+          >
+            <span>CSV</span>
+            <div
+              class="bg-blue-300 border border-current rounded-full px-2 text-xs"
+            >
+              7
+            </div>
+            <button
+              class="cross-icon text-gray-600 hover:text-red-500 focus:outline-none"
+            >
+              ❌
+            </button>
+          </div>
+
+          <!-- Additional Keyword Filters -->
+          <p class="text-gray-700 mt-4 font-semibold">
+            Add other keyword filters:
+          </p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <div
+              class="badge-custom bg-yellow-200 text-yellow-700 border border-current rounded-md px-4 py-2 flex items-center justify-between w-36 hover:bg-yellow-300"
+            >
+              <span>Database</span>
+              <div
+                class="bg-yellow-300 border border-current rounded-full px-2 text-xs"
+              >
+                5
+              </div>
+            </div>
+
+            <div
+              class="badge-custom bg-yellow-200 text-yellow-700 border border-current rounded-md px-4 py-2 flex items-center justify-between w-36 hover:bg-yellow-300"
+            >
+              <span>Fieldtypes</span>
+              <div
+                class="bg-yellow-300 border border-current rounded-full px-2 text-xs"
+              >
+                3
+              </div>
+            </div>
+
+            <div
+              class="badge-custom bg-yellow-200 text-yellow-700 border border-current rounded-md px-4 py-2 flex items-center justify-between w-36 hover:bg-yellow-300"
+            >
+              <span>MotionHQ</span>
+              <div
+                class="bg-yellow-300 border border-current rounded-full px-2 text-xs"
+              >
+                5
+              </div>
+            </div>
+
+            <div
+              class="badge-custom bg-yellow-200 text-yellow-700 border border-current rounded-md px-4 py-2 flex items-center justify-between w-36 hover:bg-yellow-300"
+            >
+              <span>Files</span>
+              <div
+                class="bg-yellow-300 border border-current rounded-full px-2 text-xs"
+              >
+                3
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- column 3 end  -->
+
+    <script>
+      document
+        .getElementById("generate-summary-btn")
+        .addEventListener("click", function () {
+          var blocks = document.getElementById("blocks-to-show");
+          blocks.classList.toggle("hidden");
+        });
+    </script>
+    <script src="{% static 'js/faculty_sidebar.js' %}"></script>
+
+    <!--popup to invite students and add batch-->
+    <div id="popupContainer" class="popup-container">
+      <div class="popup-content">
+        <span class="close-btn" id="closePopupBtn">×</span>
+        <h2 style="color: #6e6e6e; font-size: 30px; font-weight: bold">
+          Invite Student
+        </h2>
+        <hr class="line" />
+        <form method="POST" action="{% url 'send_invite' %}">
+          {% csrf_token %}
+
+          <input
+            type="text"
+            id="in"
+            name="batchno"
+            placeholder="Batch No."
+            required=""
+          />
+
+          <input
+            type="email"
+            id="in"
+            name="student_email"
+            placeholder="example@example.com"
+            required=""
+          />
+          <button name="email_student" type="submit" id="put">Submit</button>
+        </form>
+        <hr style="margin-top: 10px" />
+      </div>
+    </div>
+    <button id="signIn" type="submit"></button>
+
+    <div id="batchPopupContainer" class="popup-container">
+      <div class="popup-content">
+        <span class="close-btn" id="closeBatchPopupBtn">×</span>
+        <h2 style="color: #6e6e6e; font-size: 30px; font-weight: bold">
+          Add Batch
+        </h2>
+        <hr class="line" />
+        <form method="POST">
+          {% csrf_token %}
+          <label for="batch-name" style="font-family: Arial, sans-serif"
+            >Enter batch name</label
+          >
+          <input
+            type="text"
+            id="batch-input"
+            name="batch-name"
+            placeholder="Batch Number"
+            required=""
+          />
+          <button name="batch-submit" type="submit" id="batch-submit">
+            Submit
+          </button>
+        </form>
+        <hr style="margin-top: 10px" />
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const openPopupBtn = document.getElementById("openPopupBtn");
+        const popupContainer = document.getElementById("popupContainer");
+        const closePopupBtn = document.getElementById("closePopupBtn");
+
+        const openBatchPopupBtn = document.getElementById("openBatchPopupBtn");
+        const batchPopupContainer = document.getElementById(
+          "batchPopupContainer"
+        );
+        const closeBatchPopupBtn =
+          document.getElementById("closeBatchPopupBtn");
+
+        openPopupBtn.addEventListener("click", () => {
+          popupContainer.style.display = "flex";
+        });
+
+        closePopupBtn.addEventListener("click", () => {
+          popupContainer.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === popupContainer) {
+            popupContainer.style.display = "none";
+          }
+        });
+
+        openBatchPopupBtn.addEventListener("click", () => {
+          batchPopupContainer.style.display = "flex";
+        });
+
+        closeBatchPopupBtn.addEventListener("click", () => {
+          batchPopupContainer.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+          if (event.target === batchPopupContainer) {
+            batchPopupContainer.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

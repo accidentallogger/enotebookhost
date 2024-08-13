@@ -1,0 +1,176 @@
+:root {
+    /* Define colors in :root */
+    --primary-color: #ededed;
+    --secondary-color: #fff;
+    --cta: #9e52f6;
+    --tint: #E6E6FA;
+}
+
+/* Apply base styles */
+body {
+    background-color: var(--tint); /* Set background color to tint color */
+    color: var(--secondary-color);
+    font-family: Arial, sans-serif; /* Specify font family */
+    margin: 0; /* Remove default margin */
+}
+
+/* Navigation styles */
+nav {
+    background-color: var(--tint); /* Set background color to tint color */
+    padding: 1rem; /* Add padding for spacing */
+}
+
+/* Sidebar styles */
+.sidebar-links {
+    background-color: var(--tint); /* Set background color to tint color */
+}
+
+/* Profile image styles */
+.profile-pic {
+    border: 2px solid var(--cta); /* Set border color to cta color */
+    border-radius: 50%; /* Ensure the border is round */
+    display: block; /* Ensure it's displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    max-width: 100px; /* Limit max-width for the profile image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.profile-image {
+    border: 2px solid var(--cta); /* Set border color to cta color */
+    border-radius: 50%; /* Ensure the border is round */
+    width: 100px; /* Set width for the profile image */
+    height: 100px; /* Set height for the profile image */
+    display: block; /* Ensure it's displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Button styles */
+button,
+.btn {
+    background-color: var(--cta) !important; /* Set background color to cta color */
+    color: var(--secondary-color) !important; /* Set text color to secondary color */
+    margin-top: 1rem; /* Optional: Add margin for spacing */
+}
+
+/* Verified button style */
+.verified-button {
+    background-color: var(--cta); /* Set verified button color */
+    color: var(--secondary-color); /* Set verified button text color */
+}
+
+.sidebar-top {
+    background-color: var(--tint);
+    
+
+}
+
+.cross-button{
+    background-color: var(--tint);
+    
+}
+
+.sidebar-links ul li a.active {
+    background-color: var(--tint);
+}
+
+.sidebar-links ul li a:hover {
+    background-color: var(--cta);
+}
+
+button, .bg-blue-500 {
+    background-color: var(--cta);
+    color: var(--secondary-color);
+}
+
+button:hover, .bg-blue-500:hover {
+    background-color: var(--cta);
+    color: var(--secondary-color);
+}
+
+
+
+.bg-gradient-to-r {
+    background: linear-gradient(to right, var(--tint), var(--tint));
+}
+
+.badge-positive, .badge-negative, .badge-neutral {
+    background-color: var(--primary-color); /* Background color for badges */
+    color: var(--primary-color); /* Text color for badges */
+    border: 1px solid var(--primary-color);
+}
+
+.badge-positive {
+    background-color: var(--cta);
+    backdrop-filter: blur(var(--cta)); 
+    -webkit-backdrop-filter: blur(var(--cta)); 
+    box-shadow: 0 4px 8px var(rgba(0, 0, 0, 0.1)shadow);
+}
+
+.badge-positive:hover {
+    background-color: var(--cta);
+}
+
+.badge-negative {
+    background-color: var(--cta);
+}
+
+.badge-negative:hover {
+    background-color: var(--cta);
+}
+
+.badge-neutral {
+    background-color: var(--cta);
+}
+
+.badge-neutral:hover{
+    background-color: var(--cta);
+}
+
+.badge-source {
+    background-color: var(--cta); /* Background color for source badges */
+    color: var(--secondary-color); /* Text color for source badges */
+    border: 1px solid var(--cta ); /* Border color for source badges */
+}
+
+.badge-source:hover {
+    background-color: var(--cta); /* Background color for source badges */
+    color: var(--secondary-color); /* Text color for source badges */
+    border: 1px solid var(--cta ); /* Border color for source badges */
+}
+  
+
+.badge-keywords {
+    background-color: var(--cta); /* Background color for keywords badges */
+    color: var(--secondary-color); /* Text color for keywords badges */
+    border: 1px solid var(--cta); /* Border color for keywords badges */
+}
+
+.badge-keywords:hover{
+    background-color: var(--cta); /* Background color for keywords badges */
+    color: var(--secondary-color); /* Text color for keywords badges */
+    border: 1px solid var(--cta); /* Border color for keywords badges */
+}
+
+.badge-custom {
+    background-color: var(--cta); /* Background color for custom badges */
+    color: var(--secondary-color); /* Text color for custom badges */
+    border: 1px solid var(--cta ); /* Border color for custom badges */
+}
+
+.badge-custom:hover {
+    background-color: var(--cta); /* Background color for custom badges */
+    color: var(--secondary-color); /* Text color for custom badges */
+    border: 1px solid var(--cta ); /* Border color for custom badges */
+}
+
+.bg-green-300 {
+    background-color: var(--cta); /* Set to secondary color */
+    color: var(--primary-color); /* Set text color to primary color for contrast */
+    border: 1px solid var(--cta); /* Optional border for clarity */
+}
+
+.create-btn {
+    background-color: var(--cta); /* Use the CTA color for the button background */
+    color: var(--secondary-color); /* Text color for the button */
+
+}

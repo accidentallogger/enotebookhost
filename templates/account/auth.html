@@ -1,0 +1,250 @@
+{% load static %}
+<html lang="en">
+  <head></head>
+  <body>
+    {% load static %}
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}" />
+    <title>e-notebook</title>
+
+    <style>
+      .passvalid {
+        color: #ff7f7f;
+        font-size: 12px;
+        display: none;
+      }
+      .container:before {
+        content: "";
+        position: absolute;
+        height: 1450px;
+        height: 2000px;
+        width: 2000px;
+        top: 50%;
+
+        right: 50%;
+
+        transform: translateY(-50%);
+        /* background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%); */
+        background-image: url("{% static 'img/chemistry.jpg' %}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        transition: 1.8s ease-in-out;
+        border-radius: 50%;
+        z-index: 6;
+      }
+    </style>
+
+    <div class="container">
+      {% if messages %}
+      <div>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form id="regForm" method="POST">
+            {% csrf_token %} {% block integrityerror %} {% endblock %}
+            <h1>Faculty Registration</h1>
+            <!-- Step 1 -->
+            <div class="tab">
+              <table style="width: 100%">
+                <!-- Name Field -->
+                <tbody>
+                  <tr class="form_rows">
+                    <td>
+                      <input
+                        type="text"
+                        class="form_field form-control"
+                        name="username"
+                        id="name"
+                        placeholder="Enter Name..."
+                      />
+                      <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                      <div class="error-message">
+                        Name field cannot be left empty.
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Phone Number Field -->
+                  <tr class="form_rows">
+                    <td>
+                      <input
+                        type="number"
+                        class="form_field form-control"
+                        name="phone_number"
+                        id="phone_number"
+                        placeholder="Enter Phone Number"
+                      />
+                      <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                      <div class="error-message">
+                        Phone Number field cannot be left empty.
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <br />
+            </div>
+
+            <!-- Step 2 -->
+            <div class="tab">
+              <table style="width: 100%">
+                <!-- Email Field -->
+                <tbody>
+                  <tr class="form_rows">
+                    <td>
+                      <input
+                        type="email"
+                        class="form_field form-control"
+                        name="email"
+                        id="email"
+                        placeholder="Enter E-mail"
+                      />
+                      <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                      <div class="error-message">
+                        Email field cannot be left empty.
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Password Field -->
+                  <tr class="form_rows">
+                    <td>
+                      <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        class="form_field form-control"
+                        placeholder="Enter Password"
+                      />
+                      <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                      <div class="error-message">
+                        Password field cannot be left empty.
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Confirm Password Field -->
+                  <tr class="form_rows">
+                    <td>
+                      <input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type="password"
+                        class="form_field form-control"
+                        placeholder="Confirm Password"
+                      />
+                      <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                      <div class="error-message">
+                        Confirm Password field cannot be left empty.
+                      </div>
+                      {% block validpass %}
+                      <div class="error-message">Passwords do not match.</div>
+                      {% endblock %}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Step Indicators -->
+            <div style="text-align: center">
+              <span class="step"></span>
+              <span class="step"></span>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="button-container">
+              <button
+                type="button"
+                id="prevBtn"
+                class="btn-auth"
+                onclick="nextPrev(-1)"
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                id="nextBtn"
+                class="btn-auth"
+                onclick="nextPrev(1)"
+                name="registermain"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="login-container">
+        <div class="login-form">
+          <div class="logo">
+            {% block content %}
+            <form id="loginForm" method="POST">
+              {% csrf_token %}
+              <label for="id_username">
+                <span class="login-label">Log In</span>
+                <select
+                  name="department"
+                  id="department"
+                  value="{{department}}"
+                >
+                  <option value="HeadOffice" name="HeadOffice">
+                    HeadOffice
+                  </option>
+                  <option value="Faculty" name="Faculty">Faculty</option>
+                  <option value="Student" name="Studen">Student</option>
+                </select>
+              </label>
+              {% for field in login_form %} {{field}} {% if field.help_text %}
+              <small style="color: grey">{{field.help_text}}</small>
+              {% endif %} {% endfor %} {% for error in field.errors %}
+              <p style="color: red">{{error}}</p>
+              {% endfor %} {% if login_form.non_field_errors %}
+              <div style="color: red">
+                <p>{{login_form.non_field_errors}}</p>
+              </div>
+              {% endif %}
+
+              <a href="{% url 'password_reset_request' %}" id="forgot_pass"
+                >Forgot your password</a
+              >
+              <button id="signIn" type="submit" name="loginmain">Login</button>
+            </form>
+            {% endblock content%}
+          </div>
+        </div>
+        {% block validlogin %} {% endblock validlogin%}
+        <div class="panels-container">
+          <!-- Left Panel -->
+          <div class="panel left-panel">
+            <div class="content">
+              <h3>New Here? Register as a Faculty</h3>
+              <br />
+              <button class="btn transparent" id="sign-up-btn" name="register">
+                Register
+              </button>
+            </div>
+          </div>
+          <!-- Right Panel -->
+          <div class="panel right-panel">
+            <div class="content">
+              <h3>Already have an account ?</h3>
+              <br />
+              <button class="btn transparent" id="sign-in-btn">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="{% static 'js/auth.js' %}">
+      </scrip>
+          <script>
+    </script>
+  </body>
+</html>

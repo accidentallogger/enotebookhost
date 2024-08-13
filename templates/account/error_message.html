@@ -1,0 +1,17 @@
+{% extends 'account/auth.html' %}
+
+{% block integrityerror %}
+<style>
+.errormes {
+  color: #ff7f7f;
+  font-size: 12px;
+  display: inline;
+}
+
+</style>
+
+<div class="errormes">
+                        Email or Phone number already in use.
+                      </div>
+
+                      {% endblock %}

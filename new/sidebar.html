@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar Menu</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="sidebar2.css">
+  </head>
+
+  <body>
+    <nav>
+      <div class="sidebar-top">
+        <span class="shrink-btn">
+          <i class="bx bx-chevron-left"></i>
+        </span>
+        <img src="assets/images/logo.png" class="logo" alt="" />
+        <h3 class="hide">E-notebook</h3>
+      </div>
+      <br />
+
+      <div class="sidebar-links">
+        <ul>
+          <div class="active-tab"></div>
+
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" class="active" data-active="0">
+              <div class="icon">
+                <i class="bx bx-message-edit"></i>
+                <i class="bx bxs-message-edit"></i>
+              </div>
+              <span class="link hide">Getting started</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" class="create-btn" data-active="1">
+              <div class="icon">
+                <i class="bx bx-message-square-add"></i>
+                <i class="bx bxs-message-square-add"></i>
+              </div>
+              <span class="link hide">Create</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="2">
+            <a href="#" class="active" data-active="2">
+              <div class="icon">
+                <i class="bx bx-tachometer"></i>
+                <i class="bx bxs-tachometer"></i>
+              </div>
+              <span class="link hide">Dashboard</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="3">
+            <a href="#" data-active="1">
+              <div class="icon">
+                <i class="bx bx-message-dots"></i>
+                <i class="bx bxs-message-dots"></i>
+              </div>
+              <span class="link hide">Feedback</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="4">
+            <a href="#" data-active="2">
+              <div class="icon">
+                <i class="bx bx-comment-detail"></i>
+                <i class="bx bxs-comment-detail"></i>
+              </div>
+              <span class="link hide">Issues</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="5">
+            <a href="#" data-active="3">
+              <div class="icon">
+                <i class="bx bx-message-alt-dots"></i>
+                <i class="bx bxs-message-alt-dots"></i>
+              </div>
+              <span class="link hide">Changelog</span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="6">
+            <a href="#" data-active="3">
+              <div class="icon">
+                <i class="bx bxs-user-account"></i>
+                <i class="bx bxs-user-account"></i>
+              </div>
+              <span class="link hide">Users</span>
+            </a>
+          </li>
+          <br />
+        </ul>
+
+        <h4 class="hide">WIDGETS</h4>
+
+        <ul>
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" data-active="4">
+              <div class="icon">
+                <i class="bx bxs-comment-detail"></i>
+                <i class="bx bxs-comment-detail"></i>
+              </div>
+              <span class="link hide">Annoucement</span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" data-active="5">
+              <div class="icon">
+                <i class="bx bx-help-circle"></i>
+                <i class="bx bxs-help-circle"></i>
+              </div>
+              <span class="link hide">Feedback</span>
+            </a>
+          </li>
+
+          <br /><br /><br /><br /><br />
+        </ul>
+
+        <ul>
+          <li class="tooltip-element" data-tooltip="0">
+            <a href="#" data-active="4">
+              <div class="icon">
+                <i class="bx bx-message-alt-dots"></i>
+                <i class="bx bxs-message-alt-dots"></i>
+              </div>
+              <span class="link hide">Changelog </span>
+            </a>
+          </li>
+
+          <li class="tooltip-element" data-tooltip="1">
+            <a href="#" data-active="5">
+              <div class="icon">
+                <i class="bx bx-calendar-alt"></i>
+                <i class="bx bxs-calendar-alt"></i>
+              </div>
+              <span class="link hide">What's new </span>
+            </a>
+          </li>
+          <li class="tooltip-element" data-tooltip="2">
+            <a href="#" data-active="6">
+              <div class="icon">
+                <i class="bx bx-help-circle"></i>
+                <i class="bx bxs-help-circle"></i>
+              </div>
+              <span class="link hide">Help & Support</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div class="dashboard-header">
+        <div class="search-bar">
+          <i class="bx bx-search"></i>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div class="profile-dropdown">
+          <img
+            src="assets/images/face.png"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item">View Profile</a>
+            <a href="#" class="dropdown-item">Edit Profile</a>
+            <a href="#" class="dropdown-item">Logout</a>
+          </div>
+        </div>
+      </div>
+      <h1>My Dashboard</h1>
+    </div>
+    
+    <!-- adarsh -->
+     <div class="rightSideBar">
+
+      <div class="top-analysis">
+        <h4>Here is our Top Analysis</h4>
+        <button class="generate-summary">Generate Summary</button>
+
+        <div class="progress-section">
+          <h5>Progress of Current Notebook</h5>
+          <div class="progress-circle">
+            <span class="progress-percentage">100%</span>
+          </div>
+          <div class="progress-stats">
+            <div class="stat completed">Completed 0%</div>
+            <div class="stat in-progress">In progress 0%</div>
+            <div class="stat pending">Pending 100%</div>
+          </div>
+        </div>
+
+        <div class="keywords-section">
+          <h5>Keywords</h5>
+          <div class="keyword-filters">
+            <span class="filter-count">7</span>
+            <span class="filter">Benzene 6</span>
+            <span class="filter">Carbon 6</span>
+            <span class="filter">Iodine 6</span>
+            <span class="filter">Iron 5</span>
+          </div>
+        </div>
+        <div class="top-resources">
+          <h5>Top Resources</h5>
+          <span class="resource">Chemcollectives</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <script src="sidebar.js"></script>
+  </body>
+</html>

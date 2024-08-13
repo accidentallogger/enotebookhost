@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Section Part 3</title>
+    <script src="https://kit.fontawesome.com/0342274d93.js" crossorigin="anonymous"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+  }
+.Section {
+    height: 100vh;
+    width: 40vh;
+    background-color: #E6E6FA;
+    color: #1d1160;
+    margin-left: auto;
+}
+
+.top-analysis {
+    height: 6%;
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.top-analysis button {
+    margin-right: 15px;
+}
+.generate-summary{
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.generate-summary button {
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.overall-sentiment {
+    height: 35%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.overall-sentiment p{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.overall-sentiment .sentiment-box {
+    display: flex;
+    justify-content: center;
+}
+.overall-sentiment .sentiment-box .graph{
+    height: 120px;
+    width: 120px;
+    background-color: rgb(108, 206, 108);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.overall-sentiment .badges {
+    display: flex;
+    flex-wrap: wrap;
+}
+.badges .badge{
+    display: flex;
+    width: auto;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+}
+.badges .positive {
+    box-shadow: 0 1px 3px green;
+    border-radius: 10px;
+}
+.badges .negative {
+    box-shadow: 0 1px 3px red;
+    border-radius: 10px;
+
+}
+.badges .neutral {
+    box-shadow: 0 1px 3px rgb(253, 144, 101);
+    border-radius: 10px;
+
+}
+.badges .badge p {
+    margin: 2px;
+}
+
+.keywords{
+    height:35%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+.keywords p {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.keywords .csv-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 2px 3px pink;
+
+    width: 40%;
+    border-radius: 10px;
+    height: 30px;
+}
+.keyword-badges {
+    display: flex;
+    flex-wrap: wrap;
+}
+.keyword-badges .badge {
+    display: flex;
+    box-shadow: 0 2px 3px yellowgreen;
+
+    border-radius: 10px;
+    width: auto;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.keyword-badges .badge .count{
+    margin-right: 6px;
+}
+
+.top-sources p {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.topsources-badges {
+    display: flex;
+    flex-wrap: wrap;
+}
+.topsources-badges .badge {
+    display: flex;
+    box-shadow: 0 2px 3px navy;
+    border-radius: 10px;
+    width: auto;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.topsources-badges .badge .count{
+    margin-right: 6px;
+}
+
+
+/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    </style>
+</head>
+<body>
+    <!-- Main Section -->
+    <div class="Section">
+        <!-- Here Is Our Top Analysis -->
+         <div class="top-analysis">
+            <h4>Here is Our Top Analysis</h4>
+            <button><i class="fa-solid fa-xmark"></i></button>
+         </div>
+         <!-- Generate Summary -->
+          <div class="generate-summary">
+            <button><i class="fa-solid fa-list"></i> Generate Summary</button>
+          </div>
+        <!--Overall Sentiment-->
+        <div class="overall-sentiment">
+            <p><i class="fa-solid fa-book"></i> Overall Sentiment</p>
+            <div class="sentiment-box">
+                <div class="graph">100%</div>
+            </div>
+            <div class="badges">
+                <div class="badge positive ">
+                    <p>Positive</p>
+                    <p>80%</p>
+                    <p>7</p>
+                </div>
+                <div class="badge negative">
+                    <p>Negative</p>
+                    <p>20%</p>
+                    <p>2</p>
+                </div>
+                <div class="badge neutral">
+                    <p>Neutral</p>
+                    <p>0%</p>
+                    <p>0</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Keywords-->
+        <div class="keywords">
+            <p><i class="fa-solid fa-key"></i> Keywords</p>
+            <div class="csv-badge">
+                <p>CSV</p>
+                <p>7</p>
+                <p><i class="fa-solid fa-delete-left"></i></p>
+            </div>
+            <div class="other-keywords">
+                <p>Add Other Keyword Filters :</p>
+                <div class="keyword-badges">
+                    <div class="badge">
+                        <p>Database</p>
+                        <p class="count">7</p>
+                    </div>
+                    <div class="badge">
+                        <p>Field Types</p>
+                        <p class="count">5</p>
+                    </div>
+                    <div class="badge">
+                        <p>MotionHQ</p>
+                        <p class="count">4</p>
+                    </div>
+                    <div class="badge">
+                        <p>Files</p>
+                        <p class="count">3</p>
+                    </div>
+                    <div class="badge">
+                        <p>Keyword</p>
+                        <p class="count">3</p>
+                    </div>
+                    <div class="badge">
+                        <p>Manage</p>
+                        <p class="count">3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Top-sources-->
+        <div class="top-sources">
+            <p><i class="fa-brands fa-sourcetree"></i> Top Sources</p>
+            <div class="topsources-badges">
+                <div class="badge">
+                    <p>Zapier</p>
+                    <p class="count">6</p>
+                </div>
+                <div class="badge">
+                    <p>Hubspot</p>
+                    <p class="count">1</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

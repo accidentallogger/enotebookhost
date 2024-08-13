@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Invite Status</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'table.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Invite Status</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for invite in invites %}
+                <tr>
+                    <td>{{ invite.email }}</td>
+                    <td>
+                        {% if invite.status == 'Accepted' %}
+                        <span class="status-active">Accepted</span>
+                        {% else %}
+                        <span class="status-pending">Pending</span>
+                        <button class="status-btn" onclick="resendInvite('{{ invite.email }}')">Resend</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="{% static 'table.js' %}"></script>
+    <script>
+        function resendInvite(email) {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'resend_invite' %}",
+                data: {
+                    email: email,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function(response) {
+                    alert("Error resending invite: " + response.message);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
