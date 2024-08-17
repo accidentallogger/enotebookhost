@@ -179,7 +179,6 @@ def dashboardview(request):
             context["notes"] = [i for i in range(1, int(user.totalNotebookCount))]
         if request.POST and "enotebook-" in str(request.body):
             con = []
-            print(request.body)
             notebooknumber = str(request.body)
             data = (
                 Enotebook.objects.filter(
