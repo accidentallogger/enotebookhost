@@ -85,7 +85,6 @@ def student_registration_view(request, uidb64, token):
 
     if uid is not None and invite_token_generator.check_token(uid, token):
         # Token is valid, handle registration logic here
-        print(request.body)
         if request.method == "POST":
 
             username = f"{request.POST.get('fname')} {request.POST.get('lname')}"
